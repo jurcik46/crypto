@@ -1,19 +1,14 @@
 import string
-import sys
-import time
 
 
 class StreamCipher:
 
-    def __init__(self, sed):
-        self.__myRand = sed
+    def __init__(self):
+        self.__myRand = None
 
     def my_rand(self):
-        self.__myRand = (84589 * self.__myRand + 45989) % 217728
-        return self.__myRand / 217728.0
-
-    # def mySeed(self, sed):
-    #     self.__myRand = sed
+        self.__myRand = (self.__myRand * 84589 + 45989) % 217728
+        return float(self.__myRand) / 217728
 
     def DecryptText(self, numbere, enText):
         # self.mySeed(key)
@@ -23,18 +18,13 @@ class StreamCipher:
         decryptedText = ""
         try:
             for char in enText:
-                pomChar = char.lower()
-                if any(v == pomChar for v in string.ascii_lowercase):
-                    indexOfEncryptedChar = ord(pomChar) - ord('a')
+                pomChar = char.upper()
+                if any(v == pomChar for v in string.ascii_lowercase.upper()):
+                    indexOfEncryptedChar = ord(pomChar) - ord('A')
                     myRandomNumber = self.my_rand()
-                    # print(self.__myRand)
-                    # time.sleep(0.3)
-                    indexOfStreamCipherChar = (26 * myRandomNumber)
-                    # print(indexOfStreamCipherChar)
-                    # print(myRandomNumber)
-
+                    indexOfStreamCipherChar = int((26 * myRandomNumber))
                     indexOfDecryptedChar = (indexOfEncryptedChar + (26 - indexOfStreamCipherChar)) % 26
-                    decryptedText += str((chr((ord('a') + int(indexOfDecryptedChar)))))
+                    decryptedText += str((chr((ord('A') + int(indexOfDecryptedChar)))))
                 else:
                     decryptedText += str(decryptedText.join(pomChar))
         except ZeroDivisionError:
