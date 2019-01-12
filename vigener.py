@@ -13,16 +13,16 @@ import multiprocessing
 # print(fre.Difference(
 #     "yxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxc"))
 
-streamCIpher = StreamCipher(100)
-streamCIpher.DecryptText(
-    "yxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxc");
-exit(0)
+# streamCIpher = StreamCipher(100)
+# streamCIpher.DecryptText(
+#     "yxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxc");
+# exit(0)
 variance = 0.02
 fileName = "prudovaSifraTexts/text1_enc.txt"
 file_object = open(fileName, "r")
 # what are your inputs, and what operation do you want to
 # perform on each input. For example...
-inputs = range(1000000)
+inputs = range(100000)
 encryptedText = file_object.read()
 
 
@@ -31,13 +31,14 @@ encryptedText = file_object.read()
 
 def processInput(i):
     streamCIpher = StreamCipher(i)
-    decryptedText = streamCIpher.DecryptText(encryptedText)
+    decryptedText = streamCIpher.DecryptText(i, encryptedText)
 
-    freAnalysis = FreqAnalys("sk")
+    freAnalysis = FreqAnalys("sks")
     try:
         # print(i)
         if freAnalysis.Difference(decryptedText) <= variance:
-            print("Key " + i + " -> " + decryptedText[:60])
+            print("Key " + str(i) + " -> " + decryptedText[:60])
+        # print("Key " + str(i))
     except ZeroDivisionError:
         print("Unexpected error:", ZeroDivisionError)
 
@@ -49,7 +50,7 @@ input = input("Enter key :")
 
 f = StreamCipher(int(input))
 text = f.DecryptText(encryptedText)
-text.join("   Key: ", input)
+text += str(("   Key: ", input))
 
 print(text)
 # fileName.join(".decoded.txt")

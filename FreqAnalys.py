@@ -27,9 +27,9 @@ class FreqAnalys:
         for key, value in charCount.items():
             pom = value / charSum - self.freq[key]
             diff += abs(pom)
-        a = diff / len(self.freq)
-        print(a)
-        return a
+        # a = diff / len(self.freq)
+        # print(diff / len(self.freq))
+        return diff / len(self.freq)
 
     def skCharacter(self):
         self.__freq = {
