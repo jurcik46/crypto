@@ -28,9 +28,11 @@ class StreamCipher:
                     indexOfStreamCipherChar = (26 * myRandomNumber)
 
                     indexOfDecryptedChar = (indexOfEncryptedChar + (26 - indexOfStreamCipherChar)) % 26
-                    decryptedText.join(('A' + chr(int(indexOfDecryptedChar))))
+                    decryptedText = decryptedText.join(('A' + chr(int(indexOfDecryptedChar))))
                 else:
-                    decryptedText.join(pomChar)
+                    decryptedText = decryptedText.join(pomChar)
         except ZeroDivisionError:
             print("Unexpected error:", ZeroDivisionError)
+
+        print("text decrypted:", decryptedText)
         return decryptedText

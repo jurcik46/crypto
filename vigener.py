@@ -3,13 +3,20 @@ from StreamCipher import StreamCipher
 from joblib import Parallel, delayed
 import multiprocessing
 
-# fre = FreqAnalys("sk")
 # encryptedText = "asdasdasdasxcvmxcvvjbkjnkjjktherkjntketjkfsdjkgnjkfdgdfg"
 # print(len(fre.freq))
 # print(fre.freq['a'])
-
+# fre = FreqAnalys("sk")
 # print(fre.Difference("asdasdasdasxcvmxcvvjbkjnkjjktherkjntketjkfsdjkgnjkfdgdfg"))
+# print(fre.Difference(
+#     "asdasdasdasxcvmxcvvjbkjnkjjktherkjntketjkfsdjkgnjkfdgdasxcvmxcvvjbkjnkjjktherkjntketjkfsdjkgnjkfdgdfasxcvmxcvvjbkjnkjjktherkjntketjkfsdjkgnjkfdgdfasxcvmxcvvjbkjnkjjktherkjntketjkfsdjkgnjkfdgdffg"))
+# print(fre.Difference(
+#     "yxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxc"))
 
+streamCIpher = StreamCipher(100)
+streamCIpher.DecryptText(
+    "yxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxcyxc");
+exit(0)
 variance = 0.02
 fileName = "prudovaSifraTexts/text1_enc.txt"
 file_object = open(fileName, "r")
@@ -36,7 +43,7 @@ def processInput(i):
 
 
 # multiprocessing.cpu_count()
-results = Parallel(n_jobs=1)(delayed(processInput)(i) for i in inputs)
+results = Parallel(n_jobs=multiprocessing.cpu_count())(delayed(processInput)(i) for i in inputs)
 print("END")
 input = input("Enter key :")
 

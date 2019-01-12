@@ -16,13 +16,12 @@ class FreqAnalys:
         charCount = dict.fromkeys(string.ascii_lowercase, 0)
 
         for char in text:
-            if char.lower() in charCount:
+            if char.lower() in charCount.keys():
                 charSum += 1
-                print(char)
-                print(charCount[char.lower()])
+                # print(char)
+                # print(charCount[char.lower()])
                 charCount[char.lower()] += 1
-                print(charCount[char.lower()])
-                time.sleep(0.5)
+                # print(charCount[char.lower()])
 
         diff = 0
         for key, value in charCount.items():
