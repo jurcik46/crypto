@@ -1,6 +1,5 @@
 from Rsa import Rsa
 
-import math
 
 ''''
 ==================================
