@@ -14,9 +14,39 @@ class Rsa:
 
     def decrypt(self):
         prime = self.getPrime(self.__n)
+        print("Prime : ", prime)
         q = self.__n / prime
+        print("Q :  ", q)
         fi = (prime - 1) * (q - 1)
-        d = pow(self.__e, fi - 2, fi)
-        print("Fi: ", fi)
-        print("d: ", d)
-        r = pow(self.__y, d, self.__n)
+        d = self.mul_inv(self.__e, int(fi))
+        print("Fi: ", int(fi))
+        print("d: ", int(d))
+        r = pow(self.__y, int(d), self.__n)
+        print("Vysledok   ", r)
+
+    def mul_inv(self, a, b):
+        b0 = b
+        t = 0
+        q = 0
+        x0 = 0
+        x1 = 1
+        if b == 1:
+            return 1
+        while a > 1:
+            q = a / b
+            t = int(b)
+            b = int(a) % b
+            a = t
+            t = x0
+            x0 = x1 - int(q) * x0
+            x1 = t
+        if x1 < 0:
+            x1 += b0
+        return x1
+
+    def modInverse(self, a, m):
+        a = a % m
+        for x in range(1, m):
+            if (a * x) % m == 1:
+                return x
+        return 1
