@@ -2,7 +2,7 @@ from vigenerCipherNew import VigenerCipherNew
 
 v = VigenerCipherNew()
 
-fileName = "vigenerovaSifraTexts/text4_enc.txt"
+fileName = "vigenerovaSifraTexts/text3_enc.txt"
 file_object = open(fileName, "r")
 encryptedText = file_object.read()
 encryptedText2 = encryptedText

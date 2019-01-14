@@ -20,8 +20,8 @@ class Rsa:
         print("Q :  ", q)
         fi = (prime - 1) * (q - 1)
         d = self.mul_inv(self.__e, int(fi))
-        print("Fi: ", int(fi))
-        print("d: ", int(d))
+        print("Fi (Verejny): ", int(fi))
+        print("d (private) : ", int(d))
         r = pow(self.__y, int(d), self.__n)
         print("Vysledok   ", r)
 

@@ -20,9 +20,9 @@ def processInput(i, encryptedText, variance):
 fre = FreqAnalys("sks")
 stream = StreamCipher()
 variance = 0.02
-fileName = "prudovaSifraTexts/text4_enc.txt"
+fileName = "prudovaSifraTexts/text1_enc.txt"
 file_object = open(fileName, "r")
-inputs = range(55000, 100000)
+inputs = range(70000, 80000)
 encryptedText = file_object.read()
 Parallel(n_jobs=multiprocessing.cpu_count())(
     delayed(processInput)(i, encryptedText, variance) for i in inputs)

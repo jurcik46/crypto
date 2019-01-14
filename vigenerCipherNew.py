@@ -32,9 +32,9 @@ class VigenerCipherNew:
                     pom = ord(cipherBlock[ch]) - i
                 freq[(pom - ord('a'))] += 1
             for j in range(26):
-                # chiSquareVal = pow((freq[j] - (strLen * self.__sk[j])), 2) / self.__sk[j] * strLen
+                chiSquareVal = pow((freq[j] - (strLen * self.__sk[j])), 2) / self.__sk[j] * strLen
                 # print(self.__sk[j])
-                chiSquareVal = pow(freq[j] - (strLen * self.__en[j]), 2) / self.__en[j] * strLen
+                # chiSquareVal = pow(freq[j] - (strLen * self.__en[j]), 2) / self.__en[j] * strLen
                 self.__sum += chiSquareVal
             if i == 0:
                 self.__min = self.__sum
