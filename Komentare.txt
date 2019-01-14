@@ -1,0 +1,43 @@
+RSA
+
+/**
+     * N - ko je nasobok dvoch prvocisel. Ako prve je potrebne najst prve prvocislo, ktore
+     * generujem z funkcie a zistujem ci zvysok po deleni je 0 ak ako tak som nasiel prve prvocislo.
+     * Druhe prvocislo ziskam delenim N / prve prvocislo.
+     *
+     * Dalsim krokom je zistenie verejneho a privatneho kluca. Verejny kluc je v zadani a privatny kluc dostaneme
+     * pomocou rozšíreného euclidovho algoritmu.
+     *
+     * Po ziskani tychto klucov pouzijeme wolfram alpha a zistime desifrovanu spravu pomocou inverzného modula
+     */
+
+------------------------------------------------------------------------------
+Prudova sifra
+
+/**
+     * Nacitam si zasifrovany text zo suboru. Pomocou brute force utoku generujeme seed, desifrujeme spravu a
+     * z desifrovanej spravy nasledne pocitame koeficient koincidencie.
+     * Jednotlive desifrovane spravi vypisujeme na obrazovku a prehadavame, ktora zo sprav dava zmysel.
+     * Ak najdeme desifrovanu spravu ktora dava zmysel, tak nami generovany seed je vlastne kluc pomocou ktoreho
+     * spravu desifrujeme.
+     */
+
+------------------------------------------------------------------------------
+Vigenerova sifra
+
+/**
+     * Zo suboru si nacitame zasifrovanu spravu a zistime jej velkost.
+     * Nacitany text si upravime, odstranime z neho medzery, cisla, ciarky tak, aby nam ostali iba znaky abecedy.
+     * Po uprave textu zistujeme dlzku kluca. Postupne prechadzame text a hladame zhodu prve s posunom o jedno potom
+     * o dva a pocetnost zhody zapisujeme do pola. Nasledne toto pole prejdeme a kedze vieme , že dlzka kluca je
+     * od 20 do 29 znakov, tak vyberieme najväcsiu pocetnost a to je nasa dlzka hesla.
+     *
+     * Ak pozname dlzku hesla tak si text rozdelime na bloky. Pocet blokov je rovnaky ako dlzka hesla. a postupne
+     * zapisujeme znaky do blokov napr. pri dlzke hesla 23 -> 1. blok obsahuje znaky 1. 24. 47. atd...,
+     * 2. blok obsahuje znaky 2. 25. 48. atd...
+     *
+     * Nasledne prebehneme jednotlive bloky, zistime pocetnost znakov v tychto blokoch a spravime frekvencnu analyzu.
+     * Z tento frekvencnej analyzi nam vyjde kluc.
+     *
+     * Po zisteni kluca desifrujeme spravu.
+     */
