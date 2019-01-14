@@ -6,6 +6,7 @@ class FreqAnalys:
 
     def __init__(self, lang):
         self.__freq = dict()
+        self.__lang = lang
         if lang == "sk":
             self.skCharacter()
         else:
@@ -89,3 +90,7 @@ class FreqAnalys:
     @property
     def freq(self):
         return self.__freq
+
+    @property
+    def lang(self):
+        return self.__lang

@@ -12,6 +12,7 @@ class Rsa:
             if paramNumber % num == 0:
                 return num
 
+    # n nasobom prvocisel
     def decrypt(self):
         prime = self.getPrime(self.__n)
         print("Prime : ", prime)

@@ -14,6 +14,9 @@ def processInput(i, encryptedText, variance):
         print("Unexpected error:", ZeroDivisionError)
 
 
+# 0.0667 EN
+# 0.06027 SK
+
 fre = FreqAnalys("sks")
 stream = StreamCipher()
 variance = 0.02
