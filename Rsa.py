@@ -12,7 +12,7 @@ class Rsa:
             if paramNumber % num == 0:
                 return num
 
-    # n nasobom prvocisel
+
     def decrypt(self):
         prime = self.getPrime(self.__n)
         print("Prime : ", prime)
@@ -20,8 +20,8 @@ class Rsa:
         print("Q :  ", q)
         fi = (prime - 1) * (q - 1)
         d = self.mul_inv(self.__e, int(fi))
-        print("Fi (Verejny): ", int(fi))
-        print("d (private) : ", int(d))
+        print("Fi (v): ", int(fi))
+        print("d (p) : ", int(d))
         r = pow(self.__y, int(d), self.__n)
         print("Vysledok   ", r)
 
